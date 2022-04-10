@@ -1,13 +1,13 @@
 @import url('https://fonts.googleapis.com/css2?family=Quicksand&display=swap');
 *{
-  font-family: 'Quicksand';
+  font-family: 'Quicksand' !important;
 }
 
 .App {
   text-align: center;
 }
 body{
-  background-color: aliceblue;
+  background-color: aliceblue !important;
 }
 
 @media (prefers-reduced-motion: no-preference) {
