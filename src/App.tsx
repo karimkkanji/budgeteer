@@ -1,6 +1,6 @@
 import './App.css';
 import { ResponsivePie } from '@nivo/pie';
-import { CardFooter, Col, Container, Input, InputGroup, Row } from 'reactstrap';
+import { CardFooter, Col, Container, Input, InputGroup, Row, Table } from 'reactstrap';
 import logo from './logo.svg';
 import { useEffect, useState } from 'react';
 import Particles from 'react-tsparticles';
@@ -156,6 +156,7 @@ function App() {
     setBudget(Number(input.target.value.replace(/[^\d.-]/g, '')));
   }
 
+
   return (
     <Container className='mt-4 text-center mx-auto'>
       <h1 className='text-center'><b>Budgeteer</b></h1>
@@ -173,12 +174,14 @@ function App() {
               </Input>
             </Col>
             <Col className='mt-2'>
-              <Input type="text" name="data" id="data" placeholder="Enter Your Budget " value={display} onChange={(e) => checkandformat(e)} />
+              <Input type="text" name="data" id="data" placeholder="5,000" value={display} onChange={(e) => checkandformat(e)} />
             </Col>
           </Row>
           <hr />
         </Col>
-        <Col sm="12">
+      </Row>
+      <Row>
+      <Col lg={6} sm="12">
           <div style={{ height: 500 }}>
             <ResponsivePie
               data={data}
@@ -228,35 +231,66 @@ function App() {
                   spacing: 10
                 }
               ]}
-              legends={[
-                {
-                  anchor: 'bottom',
-                  direction: 'row',
-                  justify: false,
-                  translateX: 0,
-                  translateY: 56,
-                  itemsSpacing: 0,
-                  itemWidth: 100,
-                  itemHeight: 18,
-                  itemTextColor: '#999',
-                  itemDirection: 'left-to-right',
-                  itemOpacity: 1,
-                  symbolSize: 18,
-                  symbolShape: 'circle',
-                  effects: [
-                    {
-                      on: 'hover',
-                      style: {
-                        itemTextColor: '#000'
-                      }
-                    }
-                  ]
-                }
-              ]}
+              
             />
+          </div>
+          </Col>
+          <Col lg="6" sm="12">
+          <div>
+          <Table
+          className='text-start'
+  bordered
+  hover
+  responsive
+  size="sm"
+  striped
+>
+  <thead>
+    <tr>
+      <th>
+        #
+      </th>
+      <th>
+      Item
+      </th>
+      <th>
+        Budget
+      </th>
+    </tr>
+  </thead>
+  <tbody>
+    {data?data.map((value:any, key:number)=>
+      <tr key={key}>
+      <th scope="row">
+        {key+1}
+      </th>
+      <td>
+        {value.label}
+      </td>
+      <td>
+        {currency} {value.value.toString()
+                  .replace(/\B(?=(\d{3})+(?!\d))/g, ",")}
+      </td>
+    </tr>
+    ):<></>}
+  </tbody>
+  <tfoot>
+  <tr>
+      <th colSpan={2}>
+        Balance
+      </th>
+      <th>
+        {currency} {budget.toString()
+                  .replace(/\B(?=(\d{3})+(?!\d))/g, ",")}
+      </th>
+    </tr>
+
+  </tfoot>
+</Table>
           </div>
         </Col>
       </Row>
+
       <CardFooter className="text-center">Made by <a href="https://karimkkanji.com">Karim K. Kanji</a> using <img src={logo} className="App-logo" height={20} /> React.JS</CardFooter>
     </Container>
   );
