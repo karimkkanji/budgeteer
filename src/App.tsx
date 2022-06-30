@@ -86,12 +86,12 @@ function App() {
         {
           "id": "Pension & insurance",
           "label": "Pension & insurance",
-          "value": Number((budget * 0.12).toFixed(2)),
+          "value": Number((budget * 0.125).toFixed(2)),
         },
         {
           "id": "Miscellaneous",
           "label": "Miscellaneous",
-          "value": Number((budget * 0.1).toFixed(2)),
+          "value": Number((budget * 0.056).toFixed(2)),
         },
         {
           "id": "Housing",
@@ -101,42 +101,42 @@ function App() {
         {
           "id": "Utilities",
           "label": "Utilities",
-          "value": Number((budget * 0.07).toFixed(2)),
+          "value": Number((budget * 0.056).toFixed(2)),
         },
         {
           "id": "Food",
           "label": "Food",
-          "value": Number((budget * 0.15).toFixed(2)),
+          "value": Number((budget * 0.10).toFixed(2)),
         },
         {
           "id": "Transportation",
           "label": "Transportation",
-          "value": Number((budget * 0.1).toFixed(2)),
+          "value": Number((budget * 0.125).toFixed(2)),
         },
         {
           "id": "Clothing",
           "label": "Clothing",
-          "value": Number((budget * 0.07).toFixed(2)),
+          "value": Number((budget * 0.064).toFixed(2)),
         },
         {
           "id": "Medical/Health",
           "label": "Medical/Health",
-          "value": Number((budget * 0.05).toFixed(2)),
+          "value": Number((budget * 0.056).toFixed(2)),
         },
         {
           "id": "Personal",
           "label": "Personal",
-          "value": Number((budget * 0.05).toFixed(2)),
+          "value": Number((budget * 0.056).toFixed(2)),
         },
         {
           "id": "Recreation",
           "label": "Recreation",
-          "value": Number((budget * 0.05).toFixed(2)),
+          "value": Number((budget * 0.056).toFixed(2)),
         },
         {
           "id": "Debts",
           "label": "Debts",
-          "value": Number((budget * 0.1).toFixed(2)),
+          "value": Number((budget * 0.056).toFixed(2)),
         },
 
       ])
@@ -203,7 +203,7 @@ function App() {
               arcLinkLabelsThickness={2}
               arcLinkLabelsColor={{ from: 'color' }}
               arcLabel={function (e) {
-                return `${currency}${e.value.toString().replace(/\D/g, "")
+                return `${currency} ${e.value.toString()
                   .replace(/\B(?=(\d{3})+(?!\d))/g, ",")}`
               }}
               arcLabelsSkipAngle={10}
